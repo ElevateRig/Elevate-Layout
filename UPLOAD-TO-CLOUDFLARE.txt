@@ -1,0 +1,2 @@
+Upload this ZIP directly to Cloudflare Pages using Direct Upload.
+Test the preview deployment first, then promote it to production after verifying Fit to Width and print output.

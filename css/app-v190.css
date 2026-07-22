@@ -1,0 +1,2359 @@
+
+:root{
+  --green:#55ef2d; --ink:#101315; --muted:#687078; --line:#c9ced2;
+  --panel:#fff; --bg:#eef1f3; --accent:#172127;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+button,input,select{font:inherit}
+strong,b,.brand,.sheet-title,.logo,.pointtop,.center,.data-table th,.btn,.tab{font-weight:700}
+em,i{font-style:italic}
+body,input,select,button{font-style:normal}
+.appbar{height:66px;background:#f7f9fa;color:#101315;display:flex;align-items:center;padding:0 22px;gap:16px;border-bottom:3px solid var(--green);position:sticky;top:0;z-index:20}
+.brand{font-weight:900;letter-spacing:.08em;font-size:18px}
+.brand span{color:var(--green)}
+.version{font-size:12px;color:#5f686e}
+.shell{display:grid;grid-template-columns:330px minmax(0,1fr);min-height:calc(100vh - 66px)}
+.sidebar{background:#172127;color:#fff;padding:20px;overflow:auto}
+.sidebar h2{margin:0 0 14px;font-size:15px;letter-spacing:.04em}
+.section{padding:16px 0;border-top:1px solid #344149}
+.section:first-of-type{border-top:0;padding-top:0}
+label{display:block;font-size:12px;font-weight:700;color:#cad2d6;margin:12px 0 6px}
+input[type=text],input[type=number],select{width:100%;padding:10px 11px;border-radius:7px;border:1px solid #516069;background:#0f171b;color:#fff}
+input[type=file]{width:100%;font-size:12px}
+.inline{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{border:0;border-radius:8px;padding:10px 13px;font-weight:800;cursor:pointer}
+.btn.primary{background:var(--green);color:#081008}
+.btn.secondary{background:#344149;color:white}
+.btn.ghost{background:transparent;color:white;border:1px solid #53616a}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.status{margin-top:12px;padding:10px;border-radius:7px;background:#10181c;font-size:12px;line-height:1.5;color:#d8e0e4}
+.status strong{color:var(--green)}
+.main{padding:22px;min-width:0}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:16px}
+.toolbar h1{font-size:22px;margin:0}
+.tabs{display:flex;gap:8px}
+.tab{border:1px solid #bec5ca;background:#fff;padding:8px 12px;border-radius:7px;cursor:pointer;font-weight:700}
+.tab.active{background:#172127;color:#fff;border-color:#172127}
+.card{background:#fff;border:1px solid #d5dade;border-radius:10px;box-shadow:0 3px 14px rgba(17,25,30,.06)}
+.preview-wrap{overflow:auto;padding:18px}
+.sheet{width:100%;min-width:1000px;background:#fff;color:#000;border:1px solid #222}
+.sheet-header{display:flex;justify-content:space-between;align-items:flex-start;padding:16px 20px;border-bottom:1px dotted #555}
+.sheet-title{font-size:24px;font-weight:900;margin-bottom:8px}
+.meta{font-size:13px;line-height:1.65}
+.logo{font-size:28px;font-weight:950;letter-spacing:.08em;text-align:right}
+.logo .v{color:#39d719}
+.logo-sub{font-size:13px;letter-spacing:.38em;margin-right:-.38em}
+.markout{width:100%;border-collapse:collapse;table-layout:fixed}
+.markout td{height:48px;border-bottom:1px solid #333;border-right:1px solid #888;vertical-align:middle}
+.markout tr:last-child td{border-bottom:0}
+.pointcell{padding:3px 7px;position:relative;min-width:90px}
+.pointcell.empty{background:#fff}
+.center{width:78px;background:#e6e6e6;text-align:center;font-weight:900;border-left:2px solid #333!important;border-right:2px solid #333!important}
+.center small{display:block;font-size:8px;text-align:left;padding-left:3px;line-height:1}
+.distance{font-size:15px}
+.pointtop{display:flex;align-items:center;gap:6px;font-size:15px;font-weight:900;white-space:nowrap}
+.pointid{font-size:10px;font-weight:500;margin-left:27px;margin-top:-1px;color:#333}
+.symbol{width:20px;height:20px;flex:0 0 20px;display:grid;place-items:center;font-size:20px;line-height:1}
+.table-wrap{overflow:auto}
+.data-table{width:100%;border-collapse:collapse;font-size:13px}
+.data-table th,.data-table td{padding:9px;border-bottom:1px solid #e1e5e8;text-align:left;white-space:nowrap}
+.data-table th{position:sticky;top:0;background:#f3f5f6;z-index:2}
+.data-table input{color:#111;background:white;border:1px solid #c9ced2;padding:5px;width:90px}
+.help{font-size:12px;color:#5e676d;line-height:1.55}
+.plan-card{background:#fff;border:1px solid #d5dade;border-radius:10px;box-shadow:0 3px 14px rgba(17,25,30,.06);overflow:hidden}
+.plan-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 14px;border-bottom:1px solid #dfe4e7;background:#f7f9fa}
+.plan-tools label{margin:0;color:#273037;font-size:12px}
+.plan-tools select,.plan-tools input{width:auto;min-width:90px;padding:7px 9px;background:#fff;color:#111;border:1px solid #c7cdd1}
+.plan-stage{height:72vh;min-height:520px;overflow:hidden;background:#fdfdfd;position:relative}
+#planSvg{width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+#planSvg.dragging{cursor:grabbing}
+.plan-legend{position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.94);border:1px solid #ccd2d6;border-radius:8px;padding:9px 11px;font-size:11px;line-height:1.5;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.plan-readout{position:absolute;right:14px;top:14px;background:rgba(15,23,27,.93);color:white;border-radius:8px;padding:10px 12px;min-width:175px;font-size:12px;line-height:1.5;pointer-events:none}
+.plan-readout strong{color:var(--green)}
+.point-dot{cursor:pointer;vector-effect:non-scaling-stroke}
+.point-label{font-weight:800;pointer-events:none;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round}
+.grid-line{stroke:#dfe4e7;stroke-width:1;vector-effect:non-scaling-stroke}
+.grid-major{stroke:#b7c0c5;stroke-width:1.25;vector-effect:non-scaling-stroke}
+.axis-line{stroke:#172127;stroke-width:2;vector-effect:non-scaling-stroke}
+.axis-label{font-size:11px;fill:#475158}
+.selected-ring{fill:none;stroke:#111;stroke-width:3;vector-effect:non-scaling-stroke;pointer-events:none}
+.hidden{display:none!important}
+.badge{display:inline-block;border-radius:999px;padding:4px 8px;background:#e8fbe3;color:#1c6810;font-size:11px;font-weight:800}
+@media(max-width:900px){.shell{grid-template-columns:1fr}.sidebar{position:relative}.appbar{position:relative}.main{padding:12px}}
+@media print{
+  @page{size:landscape;margin:.25in}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{background:white}
+  .appbar,.sidebar,.toolbar{display:none!important}
+  .shell{display:block}
+  .main{padding:0}
+  .card{border:0;box-shadow:none}
+  .preview-wrap{padding:0;overflow:visible}
+  .sheet{min-width:0;border:0}
+  .sheet-header{padding:8px 12px}
+  .markout td{height:37px}
+  .pointtop{font-size:12px}.pointid{font-size:8px}.center{width:60px}.distance{font-size:12px}
+}
+
+.app-brand{display:flex;align-items:center;gap:12px;letter-spacing:.08em}
+.app-brand img{width:96px;height:28px;object-fit:contain;object-position:center}
+.app-brand span{color:#101315}
+.print-logo{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:210px}
+.print-logo img{width:200px;height:54px;object-fit:contain;object-position:center}
+.print-logo .logo-sub{font-size:11px;letter-spacing:.38em;margin:2px 0 0 .38em;font-weight:700}
+.pointcell{padding:3px 7px;position:relative;min-width:90px;text-align:center}
+.pointtop{display:flex;align-items:center;justify-content:center;gap:6px;font-size:15px;font-weight:700;white-space:nowrap;text-align:center;width:100%}
+.pointid{font-size:10px;font-weight:400;margin:1px 0 0 0;color:#333;text-align:center;width:100%}
+.symbol{width:20px;height:20px;flex:0 0 20px;display:grid;place-items:center;font-size:20px;line-height:1;text-align:center}
+.center{text-align:center}
+@media print{
+  .print-logo img{width:175px;height:46px}
+  .pointcell{text-align:center!important}
+  .pointtop{justify-content:center!important;text-align:center!important}
+  .pointid{text-align:center!important;margin-left:0!important}
+}
+
+
+.center.zero-center{
+  background:#58d62e!important;
+  color:#071006!important;
+  box-shadow:inset 0 0 0 2px #1a7c08;
+}
+.center.zero-center small{color:#071006}
+.orientation-note{font-size:11px;line-height:1.45;color:#cbd3d7;margin-top:7px}
+
+
+.check-label{display:flex;align-items:center;gap:8px;color:#fff;font-size:12px;font-weight:700;margin-top:12px}
+.check-label input{width:auto;min-width:0}
+.pointcell.empty{background:transparent!important;border-color:transparent!important}
+.pointcell{overflow:hidden}
+.pointtop{font-size:clamp(10px,1.15vw,15px);line-height:1.05;min-width:0}
+.pointid{font-size:clamp(8px,.85vw,10px);line-height:1.05;overflow-wrap:anywhere}
+.cableline{font-size:clamp(7px,.72vw,9px);font-style:italic;color:#4d555a;line-height:1.05;margin-top:2px;overflow-wrap:anywhere}
+.center .distance{white-space:nowrap;font-size:clamp(10px,1.1vw,15px)}
+.plan-logo-badge{position:absolute;left:14px;top:14px;background:rgba(255,255,255,.96);border:1px solid #c9d0d4;border-radius:8px;padding:7px 10px;display:flex;align-items:center;gap:8px;z-index:3;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.plan-logo-badge img{width:82px;height:24px;object-fit:contain}
+.plan-logo-badge span{font-size:9px;font-weight:700;letter-spacing:.08em;color:#111}
+.repeating-print-logo{display:none}
+@media print{
+  @page{size:portrait;margin:.35in}
+  .repeating-print-logo{display:flex;position:fixed;top:.08in;right:.12in;z-index:9999;background:#fff;border:1px solid #cbd1d5;border-radius:5px;padding:4px 7px;align-items:center;gap:5px}
+  .repeating-print-logo img{width:72px;height:20px;object-fit:contain}
+  .repeating-print-logo span{font-size:6px;font-weight:700;color:#111;letter-spacing:.08em}
+  .sheet{width:100%!important;min-width:0!important}
+  .sheet-header{padding-top:24px}
+  .markout{table-layout:fixed}
+  .markout td{height:34px}
+  .pointcell{padding:2px 3px;min-width:0}
+  .pointtop{font-size:9px!important;gap:2px!important;white-space:normal!important;overflow-wrap:anywhere}
+  .pointid{font-size:7px!important;overflow-wrap:anywhere}
+  .cableline{font-size:6px!important}
+  .symbol{width:12px!important;height:12px!important;flex-basis:12px!important;font-size:12px!important}
+  .center{width:48px!important}
+  .center small{font-size:6px!important}
+  .distance{font-size:9px!important}
+  .pointcell.empty{border:0!important}
+  .print-logo{background:#fff;padding:3px;border-radius:4px}
+}
+
+
+.app-brand{display:flex;align-items:center;min-width:215px}
+.app-brand img{width:210px;height:48px;object-fit:contain;object-position:left center}
+.plan-logo-badge{background:#050505!important;border:1px solid #465158!important;padding:7px 10px!important}
+.plan-logo-badge img{width:172px!important;height:50px!important;object-fit:contain!important}
+.print-logo{background:#fff;padding:4px;border-radius:4px;min-width:210px}
+.print-logo img{width:205px!important;height:58px!important;object-fit:contain!important}
+.print-logo .logo-sub{display:none!important}
+.markout td{
+  border-bottom:1px solid #333!important;
+}
+.markout .pointcell:not(.empty){
+  border-top:1px solid #888!important;
+  border-left:1px solid #888!important;
+  border-right:1px solid #888!important;
+}
+.markout .pointcell.empty{
+  border-left:0!important;
+  border-right:0!important;
+  border-top:0!important;
+  border-bottom:1px solid #333!important;
+}
+.markout .center{
+  border-top:2px solid #333!important;
+  border-left:2px solid #333!important;
+  border-right:2px solid #333!important;
+  border-bottom:1px solid #333!important;
+}
+.datum-outer{stroke:#58d62e;stroke-width:5;vector-effect:non-scaling-stroke}
+.datum-inner{stroke:#050505;stroke-width:2;vector-effect:non-scaling-stroke}
+.datum-ring{fill:none;stroke:#58d62e;stroke-width:3;vector-effect:non-scaling-stroke}
+.print-page-number{display:none}
+@media print{
+  .print-page-number{
+    display:block;
+    position:fixed;
+    right:.22in;
+    bottom:.12in;
+    font-size:8px;
+    font-weight:700;
+  }
+  .markout td{border-bottom:1px solid #333!important}
+  .markout .pointcell:not(.empty){
+    border-top:1px solid #777!important;
+    border-left:1px solid #777!important;
+    border-right:1px solid #777!important;
+  }
+  .markout .pointcell.empty{
+    border-left:0!important;
+    border-right:0!important;
+    border-top:0!important;
+    border-bottom:1px solid #333!important;
+  }
+}
+
+
+
+/* V9 fixed SVG print renderer */
+.print-pages{display:none}
+.svg-print-page{
+  width:8.18in;
+  height:10.68in;
+  background:#fff;
+  page-break-after:always;
+  break-after:page;
+  overflow:hidden;
+  margin:0;
+  padding:0;
+}
+.svg-print-page:last-child{
+  page-break-after:auto;
+  break-after:auto;
+}
+.svg-print-page svg{
+  display:block;
+  width:8.18in;
+  height:10.68in;
+  margin:0;
+  padding:0;
+}
+@media print{
+  @page{size:letter portrait;margin:.16in}
+  html,body{
+    margin:0!important;
+    padding:0!important;
+    width:auto!important;
+    height:auto!important;
+    min-height:0!important;
+    overflow:visible!important;
+    background:#fff!important;
+  }
+  .appbar,.sidebar,.toolbar,#previewTab,#planTab,#dataTab{
+    display:none!important;
+  }
+  .shell,.main{
+    display:block!important;
+    margin:0!important;
+    padding:0!important;
+    width:auto!important;
+    height:auto!important;
+    min-height:0!important;
+    overflow:visible!important;
+  }
+  .print-pages{
+    display:block!important;
+    margin:0!important;
+    padding:0!important;
+    width:8.18in!important;
+    height:auto!important;
+    min-height:0!important;
+    overflow:visible!important;
+  }
+  .svg-print-page{
+    display:block!important;
+    margin:0!important;
+    padding:0!important;
+    width:8.18in!important;
+    height:10.68in!important;
+    overflow:hidden!important;
+  }
+  .svg-print-page svg{
+    width:8.18in!important;
+    height:10.68in!important;
+  }
+}
+
+
+.svg-print-page svg rect,
+.svg-print-page svg line{
+  shape-rendering:crispEdges;
+}
+
+
+/* Plan View stays inside the normal app layout */
+.main{
+  align-self:start;
+  min-height:calc(100vh - 66px);
+}
+#planTab{
+  position:relative;
+  width:100%;
+  margin:0;
+}
+.plan-stage{
+  height:72vh!important;
+  min-height:560px!important;
+  max-height:760px!important;
+}
+#planSvg{
+  width:100%!important;
+  height:100%!important;
+}
+
+
+.toolbar{
+  position:sticky;
+  top:66px;
+  z-index:20;
+  background:#eef1f3;
+}
+.tabs{
+  position:sticky;
+  top:66px;
+  z-index:25;
+}
+
+
+.svg-print-page svg{
+  overflow:hidden;
+}
+.svg-print-page text{
+  dominant-baseline:auto;
+}
+
+
+/* Keep Plan View at the top of the normal workspace */
+.workspace-head,
+.tabs,
+.toolbar{
+  scroll-margin-top:0;
+}
+#planTab{
+  margin-top:0!important;
+  padding-top:0!important;
+}
+.plan-stage{
+  margin-top:0!important;
+}
+
+
+@media print{
+  @page{
+    size:letter portrait;
+    margin:.16in;
+  }
+}
+
+
+/* Print-safe grid rendering */
+.svg-print-page,
+.svg-print-page svg,
+.svg-print-page svg *{
+  -webkit-print-color-adjust:exact!important;
+  print-color-adjust:exact!important;
+}
+.svg-print-page svg line,
+.svg-print-page svg rect{
+  vector-effect:non-scaling-stroke;
+  shape-rendering:crispEdges;
+}
+@media print{
+  .svg-print-page svg line{
+    stroke:#000!important;
+  }
+  .svg-print-page svg rect{
+    stroke:#000!important;
+  }
+}
+
+
+/* V10 uniform printed typography */
+.svg-print-page text{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;
+  font-kerning:normal;
+}
+
+
+/* V10 navigation fix: browser stays fixed; panels own their scrolling */
+html,body{
+  width:100%;
+  height:100%;
+  margin:0;
+  overflow:hidden!important;
+}
+body{
+  display:flex;
+  flex-direction:column;
+}
+.appbar{
+  position:relative!important;
+  top:auto!important;
+  flex:0 0 66px;
+  z-index:100;
+}
+.shell{
+  flex:1 1 auto;
+  display:grid;
+  height:calc(100vh - 66px)!important;
+  min-height:0!important;
+  overflow:hidden!important;
+}
+.sidebar{
+  position:relative!important;
+  top:auto!important;
+  height:100%!important;
+  min-height:0!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain;
+}
+.main{
+  align-self:stretch!important;
+  height:100%!important;
+  min-height:0!important;
+  overflow-y:auto!important;
+  overflow-x:auto!important;
+  overscroll-behavior:contain;
+  scroll-behavior:auto!important;
+}
+.toolbar{
+  position:sticky!important;
+  top:0!important;
+  z-index:80!important;
+  background:#eef1f3!important;
+}
+#previewTab,#planTab,#dataTab{
+  margin-top:0!important;
+  scroll-margin-top:0!important;
+}
+#planTab{
+  min-height:0!important;
+}
+.plan-stage{
+  height:calc(100vh - 190px)!important;
+  min-height:500px!important;
+  max-height:none!important;
+}
+@media(max-width:900px){
+  html,body{
+    overflow:auto!important;
+    height:auto;
+  }
+  body{
+    display:block;
+  }
+  .shell{
+    display:block;
+    height:auto!important;
+    overflow:visible!important;
+  }
+  .sidebar,.main{
+    height:auto!important;
+    overflow:visible!important;
+  }
+}
+
+
+#dataTab{
+  padding-top:0!important;
+}
+#dataTab table{
+  margin-top:0!important;
+}
+
+
+/* V11: one workspace, one active view */
+.main{
+  display:flex!important;
+  flex-direction:column!important;
+  height:100%!important;
+  min-height:0!important;
+  overflow:hidden!important;
+}
+.toolbar{
+  flex:0 0 auto;
+  position:relative!important;
+  top:auto!important;
+  z-index:20;
+}
+.workspace-viewport{
+  position:relative;
+  flex:1 1 auto;
+  min-height:0;
+  overflow:hidden;
+}
+.workspace-view{
+  position:absolute;
+  inset:0;
+  display:none!important;
+  overflow:auto;
+  margin:0!important;
+}
+.workspace-view.active-view{
+  display:block!important;
+}
+#previewTab.workspace-view{
+  padding:12px;
+}
+#planTab.workspace-view{
+  padding:0;
+  overflow:hidden;
+}
+#dataTab.workspace-view{
+  padding:0;
+}
+#planTab .plan-stage{
+  height:100%!important;
+  min-height:0!important;
+  max-height:none!important;
+}
+#planSvg{
+  width:100%!important;
+  height:100%!important;
+}
+
+
+.plan-point-group.selected circle:not(.point-hit){
+  stroke:#000!important;
+  stroke-width:4!important;
+}
+.plan-point-group.selected text{
+  font-weight:900!important;
+  paint-order:stroke;
+  stroke:#fff;
+  stroke-width:3px;
+}
+.point-detail-card{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:260px;
+  max-width:calc(100% - 24px);
+  background:#111a1f;
+  color:#fff;
+  border:1px solid #465158;
+  border-radius:10px;
+  padding:12px 14px;
+  box-shadow:0 8px 28px rgba(0,0,0,.28);
+  z-index:30;
+  display:none;
+}
+.point-detail-card.visible{
+  display:block;
+}
+.point-detail-card h3{
+  margin:0 0 8px;
+  font-size:18px;
+  color:#58d62e;
+}
+.point-detail-grid{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:5px 10px;
+  font-size:12px;
+}
+.point-detail-grid strong{
+  color:#b9c4ca;
+}
+
+
+/* V11 workspace repair */
+.workspace-viewport{
+  position:relative;
+  flex:1 1 auto;
+  min-height:0;
+  overflow:hidden;
+}
+#dataTab{
+  inset:0!important;
+  padding:0!important;
+  background:#fff;
+  overflow:auto!important;
+}
+#dataTab .data-table{
+  width:100%;
+  margin:0!important;
+  border-collapse:collapse;
+}
+#dataTab .data-table thead{
+  position:sticky;
+  top:0;
+  z-index:15;
+  background:#eef1f3;
+}
+#dataTab .data-table th{
+  background:#eef1f3;
+  box-shadow:0 1px 0 #cbd2d6;
+}
+#planTab{
+  inset:0!important;
+}
+#planSvg{
+  cursor:grab;
+  touch-action:none;
+}
+#planSvg.dragging{
+  cursor:grabbing;
+}
+#planSvg .point-hit,
+#planSvg .plan-point-group{
+  cursor:pointer;
+}
+
+
+/* V11.1 plan label cleanup */
+.point-label{
+  font-weight:700!important;
+  pointer-events:none!important;
+  paint-order:normal!important;
+  stroke:none!important;
+  stroke-width:0!important;
+  fill:#111!important;
+}
+.plan-point-group.selected .point-label{
+  stroke:none!important;
+  stroke-width:0!important;
+  paint-order:normal!important;
+  font-weight:900!important;
+}
+.plan-symbol{
+  vector-effect:non-scaling-stroke;
+  pointer-events:none;
+}
+.plan-symbol-outline{
+  fill:none;
+  stroke-width:1.5;
+  vector-effect:non-scaling-stroke;
+}
+.plan-symbol-fill{
+  stroke-width:1.1;
+  vector-effect:non-scaling-stroke;
+}
+
+/* Point Data always starts at the true top of its workspace */
+#dataTab{
+  top:0!important;
+  padding-top:0!important;
+  scroll-padding-top:0!important;
+}
+#dataTab .data-table{
+  transform:none!important;
+}
+#dataTab .data-table thead{
+  top:0!important;
+}
+#dataTab .data-table tbody tr:first-child td{
+  border-top:0;
+}
+
+
+/* V11.3 definitive workspace geometry */
+html,body{
+  width:100%!important;
+  height:100%!important;
+  overflow:hidden!important;
+}
+body{
+  display:flex!important;
+  flex-direction:column!important;
+}
+.appbar{
+  flex:0 0 66px!important;
+}
+.shell{
+  flex:1 1 auto!important;
+  height:calc(100vh - 66px)!important;
+  min-height:0!important;
+  overflow:hidden!important;
+}
+.main{
+  display:grid!important;
+  grid-template-rows:76px minmax(0,1fr)!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  height:100%!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  padding:0!important;
+}
+.toolbar{
+  grid-row:1!important;
+  position:relative!important;
+  inset:auto!important;
+  top:auto!important;
+  left:auto!important;
+  right:auto!important;
+  height:76px!important;
+  min-height:76px!important;
+  margin:0!important;
+  padding:14px 18px!important;
+  box-sizing:border-box!important;
+  background:#eef1f3!important;
+  border-bottom:1px solid #cbd2d6!important;
+  z-index:100!important;
+}
+.workspace-viewport{
+  grid-row:2!important;
+  position:relative!important;
+  inset:auto!important;
+  width:100%!important;
+  height:100%!important;
+  min-width:0!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  margin:0!important;
+  padding:0!important;
+}
+.workspace-view{
+  position:absolute!important;
+  inset:0!important;
+  display:none!important;
+  min-width:0!important;
+  min-height:0!important;
+  margin:0!important;
+  box-sizing:border-box!important;
+}
+.workspace-view.active-view{
+  display:block!important;
+}
+#previewTab{
+  overflow:auto!important;
+  padding:12px!important;
+}
+#planTab{
+  overflow:hidden!important;
+  padding:0!important;
+}
+#dataTab{
+  overflow:auto!important;
+  padding:0!important;
+  background:#fff!important;
+  scroll-padding-top:0!important;
+}
+#dataTab .data-table{
+  width:100%!important;
+  margin:0!important;
+  border-collapse:collapse!important;
+  transform:none!important;
+}
+#dataTab .data-table thead{
+  position:sticky!important;
+  top:0!important;
+  z-index:50!important;
+  background:#eef1f3!important;
+}
+#dataTab .data-table th{
+  background:#eef1f3!important;
+}
+
+
+/* Matching symbols on screen Layout */
+.pointtop .symbol{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:1.2em!important;
+  min-width:1.2em!important;
+  font-size:1.15em!important;
+  line-height:1!important;
+  font-weight:700!important;
+}
+
+
+@media screen{
+  html,body{
+    width:100%!important;
+    height:100%!important;
+    margin:0!important;
+    overflow:hidden!important;
+  }
+
+  body{
+    display:flex!important;
+    flex-direction:column!important;
+  }
+
+  .appbar{
+    flex:0 0 66px!important;
+    height:66px!important;
+  }
+
+  .shell{
+    flex:1 1 auto!important;
+    display:grid!important;
+    grid-template-columns:294px minmax(0,1fr)!important;
+    grid-template-rows:minmax(0,1fr)!important;
+    width:100%!important;
+    height:calc(100vh - 66px)!important;
+    min-height:0!important;
+    overflow:hidden!important;
+  }
+
+  .sidebar{
+    grid-column:1!important;
+    grid-row:1!important;
+    position:relative!important;
+    inset:auto!important;
+    width:auto!important;
+    height:100%!important;
+    min-height:0!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    z-index:20!important;
+  }
+
+  .main{
+    grid-column:2!important;
+    grid-row:1!important;
+    display:grid!important;
+    grid-template-rows:76px minmax(0,1fr)!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    width:100%!important;
+    height:100%!important;
+    min-width:0!important;
+    min-height:0!important;
+    padding:0!important;
+    margin:0!important;
+    overflow:hidden!important;
+  }
+
+  .toolbar{
+    grid-row:1!important;
+    position:relative!important;
+    inset:auto!important;
+    top:auto!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    width:100%!important;
+    height:76px!important;
+    min-height:76px!important;
+    margin:0!important;
+    padding:14px 18px!important;
+    box-sizing:border-box!important;
+    background:#eef1f3!important;
+    border-bottom:1px solid #cbd2d6!important;
+    z-index:50!important;
+  }
+
+  .workspace-viewport{
+    grid-row:2!important;
+    position:relative!important;
+    width:100%!important;
+    height:100%!important;
+    min-width:0!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:hidden!important;
+  }
+
+  .workspace-view{
+    position:absolute!important;
+    inset:0!important;
+    display:none!important;
+    width:100%!important;
+    height:100%!important;
+    min-width:0!important;
+    min-height:0!important;
+    margin:0!important;
+    box-sizing:border-box!important;
+  }
+
+  .workspace-view.active-view{
+    display:block!important;
+  }
+
+  #previewTab{
+    overflow:auto!important;
+    padding:12px!important;
+    background:#eef1f3!important;
+  }
+
+  #planTab{
+    position:absolute!important;
+    overflow:hidden!important;
+    padding:0!important;
+    background:#fff!important;
+  }
+
+  #planTab .plan-stage{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+  }
+
+  #planSvg{
+    width:100%!important;
+    height:100%!important;
+  }
+
+  .point-detail-card{
+    position:absolute!important;
+    top:16px!important;
+    right:16px!important;
+    bottom:auto!important;
+    left:auto!important;
+    width:270px!important;
+    max-width:calc(100% - 32px)!important;
+    max-height:calc(100% - 32px)!important;
+    overflow:auto!important;
+    z-index:100!important;
+  }
+
+  #dataTab.active-view{
+    display:flex!important;
+    flex-direction:column!important;
+    overflow:hidden!important;
+    padding:0!important;
+    background:#fff!important;
+  }
+
+  .data-panel{
+    display:flex!important;
+    flex-direction:column!important;
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    overflow:hidden!important;
+  }
+
+  .data-panel-bar{
+    flex:0 0 52px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    padding:8px 14px!important;
+    box-sizing:border-box!important;
+    background:#f7f8f9!important;
+    border-bottom:1px solid #cbd2d6!important;
+  }
+
+  .data-panel-bar strong{
+    display:block;
+    font-size:15px;
+  }
+
+  .data-panel-bar span{
+    display:block;
+    margin-top:2px;
+    color:#5a666d;
+    font-size:11px;
+  }
+
+  .data-scroll{
+    flex:1 1 auto!important;
+    min-height:0!important;
+    overflow:auto!important;
+    scroll-behavior:auto!important;
+  }
+
+  .data-table{
+    width:100%!important;
+    margin:0!important;
+    border-collapse:collapse!important;
+    table-layout:fixed!important;
+  }
+
+  .data-table thead{
+    position:sticky!important;
+    top:0!important;
+    z-index:30!important;
+  }
+
+  .data-table th{
+    background:#eef1f3!important;
+    box-shadow:0 1px 0 #cbd2d6!important;
+  }
+}
+
+
+@media screen{
+  .point-detail-card{
+    top:16px!important;
+    right:16px!important;
+    left:auto!important;
+    bottom:auto!important;
+    width:260px!important;
+    max-width:calc(100% - 32px)!important;
+    max-height:calc(100% - 32px)!important;
+    overflow:auto!important;
+    cursor:default!important;
+  }
+
+  .point-detail-card.dragging{
+    cursor:grabbing!important;
+    user-select:none!important;
+  }
+
+  .point-detail-card h3{
+    cursor:grab!important;
+    user-select:none!important;
+    padding-right:28px!important;
+  }
+
+  .point-detail-close{
+    position:absolute;
+    top:8px;
+    right:10px;
+    width:22px;
+    height:22px;
+    border:0;
+    border-radius:5px;
+    background:#263138;
+    color:#fff;
+    font-size:14px;
+    line-height:22px;
+    cursor:pointer;
+  }
+
+  .point-detail-close:hover{
+    background:#3a474f;
+  }
+
+  /* Point Data fit */
+  #dataTab{
+    overflow:hidden!important;
+  }
+
+  .data-panel{
+    min-width:0!important;
+  }
+
+  .data-scroll{
+    overflow:auto!important;
+  }
+
+  .data-table{
+    width:100%!important;
+    min-width:0!important;
+    table-layout:fixed!important;
+  }
+
+  .data-table th,
+  .data-table td{
+    padding:5px 6px!important;
+    font-size:11px!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+  }
+
+  .data-table input,
+  .data-table select{
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    box-sizing:border-box!important;
+    font-size:11px!important;
+    padding:3px 5px!important;
+  }
+
+  .data-table th:nth-child(1),
+  .data-table td:nth-child(1){width:11%!important;}
+
+  .data-table th:nth-child(2),
+  .data-table td:nth-child(2){width:14%!important;}
+
+  .data-table th:nth-child(3),
+  .data-table td:nth-child(3){width:10%!important;}
+
+  .data-table th:nth-child(4),
+  .data-table td:nth-child(4){width:11%!important;}
+
+  .data-table th:nth-child(5),
+  .data-table td:nth-child(5){width:18%!important;}
+
+  .data-table th:nth-child(6),
+  .data-table td:nth-child(6){width:18%!important;}
+
+  .data-table th:nth-child(7),
+  .data-table td:nth-child(7){width:10%!important;}
+}
+
+
+/* ===== V11.7 FINAL OVERRIDES ===== */
+@media screen{
+  .point-detail-card{
+    position:absolute!important;
+    top:16px!important;
+    right:16px!important;
+    left:auto!important;
+    bottom:auto!important;
+    z-index:120!important;
+  }
+  .point-detail-card.user-positioned{
+    right:auto!important;
+  }
+  .point-detail-card h3{
+    cursor:grab!important;
+    user-select:none!important;
+  }
+  .point-detail-card.dragging h3{
+    cursor:grabbing!important;
+  }
+
+  #dataTab.active-view{
+    display:block!important;
+    padding:0!important;
+    overflow:hidden!important;
+    background:#fff!important;
+  }
+
+  .point-data-panel{
+    display:grid!important;
+    grid-template-rows:48px 34px minmax(0,1fr)!important;
+    width:100%!important;
+    height:100%!important;
+    min-width:0!important;
+    min-height:0!important;
+    overflow:hidden!important;
+    background:#fff!important;
+  }
+
+  .point-data-panel-title{
+    display:flex!important;
+    align-items:center!important;
+    padding:7px 12px!important;
+    box-sizing:border-box!important;
+    background:#f7f8f9!important;
+    border-bottom:1px solid #cbd2d6!important;
+  }
+  .point-data-panel-title strong{
+    display:block!important;
+    font-size:14px!important;
+    line-height:1.1!important;
+  }
+  .point-data-panel-title span{
+    display:block!important;
+    margin-top:2px!important;
+    color:#5a666d!important;
+    font-size:10px!important;
+  }
+
+  .point-data-header,
+  .point-data-row{
+    display:grid!important;
+    grid-template-columns:
+      minmax(68px,0.9fr)
+      minmax(92px,1.1fr)
+      minmax(68px,0.75fr)
+      minmax(78px,0.9fr)
+      minmax(96px,1.2fr)
+      minmax(96px,1.2fr)
+      minmax(64px,0.7fr)!important;
+    column-gap:6px!important;
+    align-items:center!important;
+    width:100%!important;
+    min-width:0!important;
+    box-sizing:border-box!important;
+  }
+
+  .point-data-header{
+    padding:0 8px!important;
+    background:#eef1f3!important;
+    border-bottom:1px solid #cbd2d6!important;
+    font-size:10px!important;
+    font-weight:800!important;
+  }
+  .point-data-header > div{
+    min-width:0!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    white-space:nowrap!important;
+  }
+
+  .point-data-rows{
+    width:100%!important;
+    height:100%!important;
+    min-width:0!important;
+    min-height:0!important;
+    overflow:auto!important;
+    background:#fff!important;
+  }
+
+  .point-data-body{
+    width:100%!important;
+    min-width:0!important;
+  }
+
+  .point-data-row{
+    min-height:30px!important;
+    padding:3px 8px!important;
+    border-bottom:1px solid #e1e5e8!important;
+  }
+  .point-data-row > div{
+    min-width:0!important;
+  }
+  .point-data-row input,
+  .point-data-row select{
+    display:block!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    height:23px!important;
+    padding:2px 5px!important;
+    box-sizing:border-box!important;
+    font-size:10px!important;
+  }
+}
+
+/* Print pages are independent of the fixed on-screen workspace. */
+@media print{
+  @page{
+    size:letter portrait;
+    margin:.16in;
+  }
+
+  html,body{
+    display:block!important;
+    width:auto!important;
+    height:auto!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:visible!important;
+    background:#fff!important;
+  }
+
+  .appbar,.sidebar,.toolbar,
+  #previewTab,#planTab,#dataTab{
+    display:none!important;
+  }
+
+  .shell,.main,.workspace-viewport{
+    display:block!important;
+    position:static!important;
+    width:auto!important;
+    height:auto!important;
+    min-width:0!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:visible!important;
+  }
+
+  .print-pages{
+    display:block!important;
+    position:static!important;
+    width:8.18in!important;
+    height:auto!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:visible!important;
+  }
+
+  .svg-print-page{
+    display:block!important;
+    position:relative!important;
+    width:8.18in!important;
+    height:10.68in!important;
+    min-height:10.68in!important;
+    max-height:10.68in!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:hidden!important;
+    page-break-before:auto!important;
+    page-break-after:always!important;
+    break-after:page!important;
+  }
+
+  .svg-print-page:last-child{
+    page-break-after:auto!important;
+    break-after:auto!important;
+  }
+
+  .svg-print-page svg{
+    display:block!important;
+    width:8.18in!important;
+    height:10.68in!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:hidden!important;
+  }
+}
+
+
+/* ===== V11.8 POINT DATA CLEANUP ===== */
+@media screen{
+  .point-data-header,
+  .point-data-row{
+    display:grid!important;
+    grid-template-columns:
+      minmax(48px,.72fr)
+      minmax(62px,.88fr)
+      minmax(50px,.62fr)
+      minmax(58px,.72fr)
+      minmax(70px,.88fr)
+      minmax(70px,.88fr)
+      minmax(72px,.92fr)
+      minmax(72px,.92fr)
+      minmax(48px,.58fr)!important;
+    column-gap:4px!important;
+    align-items:center!important;
+    width:100%!important;
+    min-width:0!important;
+    box-sizing:border-box!important;
+  }
+
+  .point-data-header{
+    padding:0 6px!important;
+    font-size:9px!important;
+  }
+
+  .point-data-header > div{
+    min-width:0!important;
+    padding:0 2px!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    white-space:nowrap!important;
+  }
+
+  .point-data-row{
+    min-height:28px!important;
+    padding:2px 6px!important;
+  }
+
+  .point-data-row > div{
+    min-width:0!important;
+  }
+
+  .point-data-row input,
+  .point-data-row select{
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    height:22px!important;
+    margin:0!important;
+    padding:2px 4px!important;
+    box-sizing:border-box!important;
+    border:1px solid #c8d0d5!important;
+    border-radius:4px!important;
+    background:#fff!important;
+    color:#111!important;
+    -webkit-text-fill-color:#111!important;
+    caret-color:#111!important;
+    box-shadow:none!important;
+    outline:none!important;
+    font-size:9.5px!important;
+  }
+
+  .point-data-row input:focus,
+  .point-data-row select:focus{
+    border-color:#58d62e!important;
+    box-shadow:0 0 0 1px #58d62e!important;
+    background:#fff!important;
+    color:#111!important;
+  }
+
+  .point-data-row input:-webkit-autofill,
+  .point-data-row input:-webkit-autofill:hover,
+  .point-data-row input:-webkit-autofill:focus{
+    -webkit-box-shadow:0 0 0 1000px #fff inset!important;
+    -webkit-text-fill-color:#111!important;
+  }
+
+  .point-data-row .fractional-coordinate{
+    background:#f2f5f6!important;
+    color:#263238!important;
+    -webkit-text-fill-color:#263238!important;
+    font-weight:600!important;
+    cursor:default!important;
+  }
+
+  .point-data-row input[type="number"]{
+    appearance:textfield!important;
+    -moz-appearance:textfield!important;
+  }
+
+  .point-data-row input[type="number"]::-webkit-inner-spin-button,
+  .point-data-row input[type="number"]::-webkit-outer-spin-button{
+    -webkit-appearance:none!important;
+    margin:0!important;
+  }
+}
+
+
+/* ===== V12 RIGGING SYMBOLS ===== */
+@media screen{
+  .shell{
+    display:grid!important;
+    grid-template-columns:294px minmax(0,1fr)!important;
+    width:100%!important;
+    min-width:0!important;
+    overflow:hidden!important;
+  }
+
+  .sidebar{
+    grid-column:1!important;
+    width:294px!important;
+    min-width:294px!important;
+    max-width:294px!important;
+    box-sizing:border-box!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+  }
+
+  .main{
+    grid-column:2!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    overflow:hidden!important;
+  }
+
+  .workspace-viewport{
+    position:relative!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    overflow:hidden!important;
+  }
+
+  .workspace-viewport > .workspace-view{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    box-sizing:border-box!important;
+  }
+
+  #dataTab.active-view{
+    display:block!important;
+    width:100%!important;
+    min-width:0!important;
+    overflow:hidden!important;
+  }
+
+  .point-data-panel{
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+  }
+
+  .point-data-header,
+  .point-data-row{
+    display:grid!important;
+    grid-template-columns:
+      7%
+      10%
+      7%
+      8%
+      13%
+      13%
+      15%
+      15%
+      7%!important;
+    gap:0!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    padding-left:6px!important;
+    padding-right:6px!important;
+    box-sizing:border-box!important;
+  }
+
+  .point-data-header > div,
+  .point-data-row > div{
+    min-width:0!important;
+    padding-left:3px!important;
+    padding-right:3px!important;
+    box-sizing:border-box!important;
+  }
+
+  .point-data-header{
+    font-size:9px!important;
+  }
+
+  .point-data-row input,
+  .point-data-row select{
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    font-size:9px!important;
+    padding-left:3px!important;
+    padding-right:3px!important;
+  }
+
+  .point-data-rows{
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+  }
+}
+
+
+.rig-symbol{
+  display:block;
+  width:22px;
+  height:22px;
+  flex:0 0 22px;
+  overflow:visible;
+}
+.rig-symbol-text{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  min-width:22px;
+  font-size:20px;
+  line-height:1;
+  font-weight:800;
+}
+@media print{
+  .rig-symbol{
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+}
+
+
+/* Clean production header */
+.version-banner,
+.build-banner,
+.build-info,
+#versionBanner,
+#buildInfo,
+[data-role="build-info"]{
+  display:none!important;
+}
+
+
+/* ===== V12 WORKING LAYOUT WIDTH FIX ===== */
+@media screen{
+  #previewTab{
+    overflow:auto!important;
+  }
+
+  #previewTab .preview-wrap{
+    overflow:visible!important;
+    min-width:max-content!important;
+  }
+
+  #previewTab .sheet{
+    width:var(--layout-sheet-width, 100%)!important;
+    min-width:var(--layout-sheet-width, 100%)!important;
+    max-width:none!important;
+  }
+
+  #previewTab .markout{
+    width:100%!important;
+    table-layout:fixed!important;
+  }
+
+  #previewTab .pointcell{
+    min-width:0!important;
+    padding:3px 5px!important;
+    overflow:hidden!important;
+    box-sizing:border-box!important;
+  }
+
+  #previewTab .pointtop{
+    display:grid!important;
+    grid-template-columns:22px minmax(0,1fr)!important;
+    align-items:center!important;
+    gap:4px!important;
+    width:100%!important;
+    min-width:0!important;
+    font-size:13px!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+  }
+
+  #previewTab .pointtop .symbol{
+    width:22px!important;
+    min-width:22px!important;
+    height:22px!important;
+    justify-self:center!important;
+  }
+
+  #previewTab .pointtop > span:last-child{
+    display:block!important;
+    min-width:0!important;
+    overflow:hidden!important;
+    white-space:nowrap!important;
+    text-overflow:clip!important;
+    text-align:center!important;
+  }
+
+  #previewTab .pointid{
+    width:calc(100% - 26px)!important;
+    margin:2px 0 0 26px!important;
+    min-width:0!important;
+    font-size:9px!important;
+    line-height:1!important;
+    text-align:center!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+  }
+
+  #previewTab .center{
+    width:78px!important;
+    min-width:78px!important;
+    max-width:78px!important;
+  }
+}
+
+
+/* ===== V12 WORKING V2 EXPLICIT COLUMN WIDTHS ===== */
+@media screen{
+  #previewTab{
+    overflow:auto!important;
+  }
+  #previewTab .sheet{
+    max-width:none!important;
+  }
+  #previewTab .markout{
+    width:var(--layout-sheet-width,100%)!important;
+    min-width:var(--layout-sheet-width,100%)!important;
+    max-width:none!important;
+    table-layout:fixed!important;
+  }
+  #previewTab .markout col{
+    min-width:inherit!important;
+  }
+  #previewTab .pointcell{
+    width:122px!important;
+    min-width:122px!important;
+    max-width:122px!important;
+    padding:4px 6px!important;
+    overflow:visible!important;
+  }
+  #previewTab .center{
+    width:86px!important;
+    min-width:86px!important;
+    max-width:86px!important;
+  }
+  #previewTab .pointtop{
+    display:grid!important;
+    grid-template-columns:20px minmax(0,1fr)!important;
+    gap:5px!important;
+    font-size:14px!important;
+    font-weight:700!important;
+    overflow:visible!important;
+  }
+  #previewTab .pointtop .symbol,
+  #previewTab .rig-symbol{
+    width:20px!important;
+    min-width:20px!important;
+    height:20px!important;
+  }
+  #previewTab .pointtop > span:last-child{
+    overflow:visible!important;
+    text-overflow:clip!important;
+    white-space:nowrap!important;
+  }
+  #previewTab .pointid{
+    width:calc(100% - 25px)!important;
+    margin-left:25px!important;
+    font-size:10px!important;
+    overflow:visible!important;
+  }
+}
+
+
+
+/* Elevate Layout V13 toolbar */
+.command-toolbar{
+  min-height:54px;display:flex;align-items:center;gap:6px;padding:7px 14px;
+  background:#10181c;color:#fff;border-bottom:1px solid #334047;
+  position:sticky;top:66px;z-index:19;box-shadow:0 2px 8px rgba(0,0,0,.14)
+}
+.tool-button{
+  min-height:38px;border:1px solid transparent;border-radius:7px;background:transparent;color:#fff;
+  display:inline-flex;align-items:center;gap:7px;padding:7px 11px;font-weight:750;cursor:pointer
+}
+.tool-button:hover,.tool-button:focus-visible{background:#27343a;border-color:#46545c;outline:none}
+.tool-button:active{transform:translateY(1px)}
+.tool-icon{font-size:19px;line-height:1;color:var(--green);font-weight:900}
+.tool-separator{height:28px;width:1px;background:#425058;margin:0 3px}
+.toolbar-spacer{flex:1}.toolbar-version{font-size:11px;color:#9da8ae;font-weight:800;letter-spacing:.08em}
+.menu-tool{display:none}
+.sidebar-backdrop{display:none}
+.shell{min-height:calc(100vh - 120px)}
+
+@media(max-width:900px){
+  body{overflow-x:hidden}
+  .appbar{height:58px;padding:0 14px;position:sticky;top:0;z-index:40}
+  .app-brand img{width:112px;height:34px}
+  .command-toolbar{top:58px;z-index:39;padding:6px 8px;overflow-x:auto;overscroll-behavior-x:contain;white-space:nowrap}
+  .command-toolbar::-webkit-scrollbar{display:none}
+  .menu-tool{display:inline-flex;position:sticky;left:0;background:#172127;z-index:2}
+  .tool-button{min-width:44px;min-height:42px;padding:7px 10px}
+  .tool-button span:last-child{font-size:12px}
+  .tool-separator,.toolbar-version{display:none}
+  .shell{display:block;min-height:calc(100vh - 112px)}
+  .sidebar{
+    position:fixed!important;left:0;top:112px;bottom:0;width:min(88vw,390px);z-index:60;
+    margin:0!important;transform:translateX(-105%);visibility:hidden;pointer-events:none;
+    transition:transform .22s ease,visibility 0s linear .22s;box-shadow:12px 0 30px rgba(0,0,0,.28);
+    overscroll-behavior:contain;padding-bottom:max(24px,env(safe-area-inset-bottom))
+  }
+  body.sidebar-open .sidebar{transform:translateX(0);visibility:visible;pointer-events:auto;transition-delay:0s}
+  .sidebar-backdrop{position:fixed;inset:112px 0 0;background:rgba(4,8,10,.52);z-index:55;display:block;opacity:0;pointer-events:none;transition:opacity .22s ease}
+  body.sidebar-open .sidebar-backdrop{opacity:1;pointer-events:auto}
+  .main{padding:10px;min-height:calc(100vh - 112px)}
+  .toolbar{align-items:flex-start;gap:10px;margin-bottom:10px;position:sticky;top:112px;z-index:15;background:var(--bg);padding:7px 0}
+  .toolbar h1{font-size:18px;line-height:1.05}
+  .tabs{gap:5px;overflow-x:auto}
+  .tab{padding:9px 10px;font-size:12px;min-height:40px}
+  .preview-wrap{padding:8px;max-width:100%;overflow:auto;-webkit-overflow-scrolling:touch}
+  .sheet{min-width:760px}
+  .plan-stage{height:calc(100vh - 205px);min-height:420px}
+}
+@media(max-width:560px){
+  .tool-button span:last-child{display:none}
+  .tool-button{padding:8px 12px}
+  .toolbar{display:block}
+  .toolbar h1{margin-bottom:7px}
+  .tabs{width:100%}.tab{flex:1;text-align:center}
+  .sheet{min-width:680px}
+}
+@media print{.command-toolbar,.sidebar-backdrop{display:none!important}}
+
+/* Elevate Layout V14 — reliable Android/mobile controls drawer */
+@media screen {
+  body.mobile-ui .menu-tool{
+    display:inline-flex!important;
+    position:sticky!important;
+    left:0!important;
+    background:#172127!important;
+    z-index:42!important;
+  }
+
+  body.mobile-ui .shell{
+    display:block!important;
+    grid-template-columns:none!important;
+    width:100%!important;
+  }
+
+  body.mobile-ui #appSidebar{
+    display:block!important;
+    position:fixed!important;
+    left:0!important;
+    top:var(--mobile-chrome-height,112px)!important;
+    bottom:0!important;
+    width:min(88vw,390px)!important;
+    height:auto!important;
+    margin:0!important;
+    z-index:1001!important;
+    transform:translate3d(-110%,0,0)!important;
+    visibility:hidden!important;
+    opacity:0!important;
+    pointer-events:none!important;
+    transition:transform .22s ease,opacity .18s ease,visibility 0s linear .22s!important;
+    box-shadow:12px 0 30px rgba(0,0,0,.32)!important;
+    overflow-y:auto!important;
+    overscroll-behavior:contain!important;
+  }
+
+  body.mobile-ui.sidebar-open #appSidebar{
+    transform:translate3d(0,0,0)!important;
+    visibility:visible!important;
+    opacity:1!important;
+    pointer-events:auto!important;
+    transition-delay:0s!important;
+  }
+
+  body.mobile-ui .sidebar-backdrop{
+    display:block!important;
+    position:fixed!important;
+    left:0!important;
+    right:0!important;
+    top:var(--mobile-chrome-height,112px)!important;
+    bottom:0!important;
+    z-index:1000!important;
+    background:rgba(4,8,10,.52)!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    transition:opacity .2s ease,visibility 0s linear .2s!important;
+  }
+
+  body.mobile-ui.sidebar-open .sidebar-backdrop{
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+    transition-delay:0s!important;
+  }
+
+  body.mobile-ui .main{
+    grid-column:auto!important;
+    width:100%!important;
+    max-width:100%!important;
+  }
+}
+
+
+/* Elevate Layout V14 — Android full-width layout preview */
+@media screen and (max-width:1100px), screen and (hover:none) and (pointer:coarse){
+  body.mobile-ui .shell{
+    display:block!important;
+    width:100vw!important;
+    max-width:100vw!important;
+    margin:0!important;
+  }
+  body.mobile-ui .main{
+    display:block!important;
+    width:100vw!important;
+    max-width:100vw!important;
+    min-width:0!important;
+    margin:0!important;
+    box-sizing:border-box!important;
+  }
+  body.mobile-ui .workspace-viewport,
+  body.mobile-ui #previewTab{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    margin:0!important;
+    box-sizing:border-box!important;
+  }
+  body.mobile-ui #previewTab{
+    overflow:auto!important;
+    text-align:left!important;
+  }
+  body.mobile-ui #previewTab .sheet{
+    transform-origin:top left!important;
+    margin:0!important;
+  }
+}
+
+/* ===== V14 FINAL MOBILE LAYOUT OVERRIDE =====
+   This block intentionally comes last so it overrides the accumulated desktop
+   grid rules above. The controls drawer is removed from document flow and the
+   workspace always occupies the full mobile viewport. */
+@media screen and (max-width:1100px), screen and (hover:none) and (pointer:coarse){
+  html,body{
+    width:100%!important;
+    max-width:100%!important;
+    height:100%!important;
+    overflow:hidden!important;
+  }
+
+  body.mobile-ui{
+    display:flex!important;
+    flex-direction:column!important;
+  }
+
+  body.mobile-ui .appbar{
+    flex:0 0 58px!important;
+    height:58px!important;
+  }
+
+  body.mobile-ui .command-toolbar{
+    flex:0 0 auto!important;
+  }
+
+  body.mobile-ui .shell{
+    flex:1 1 auto!important;
+    display:block!important;
+    grid-template-columns:1fr!important;
+    grid-template-rows:minmax(0,1fr)!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    height:auto!important;
+    min-height:0!important;
+    margin:0!important;
+    overflow:hidden!important;
+  }
+
+  body.mobile-ui #appSidebar{
+    grid-column:auto!important;
+    grid-row:auto!important;
+    position:fixed!important;
+    top:var(--mobile-chrome-height,112px)!important;
+    left:0!important;
+    right:auto!important;
+    bottom:0!important;
+    width:min(88vw,390px)!important;
+    min-width:0!important;
+    max-width:390px!important;
+    height:auto!important;
+    margin:0!important;
+    transform:translate3d(-110%,0,0)!important;
+    visibility:hidden!important;
+    opacity:0!important;
+    pointer-events:none!important;
+    z-index:1001!important;
+  }
+
+  body.mobile-ui.sidebar-open #appSidebar{
+    transform:translate3d(0,0,0)!important;
+    visibility:visible!important;
+    opacity:1!important;
+    pointer-events:auto!important;
+  }
+
+  body.mobile-ui .main{
+    grid-column:1!important;
+    grid-row:1!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-rows:76px minmax(0,1fr)!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    height:100%!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:hidden!important;
+  }
+
+  body.mobile-ui .toolbar,
+  body.mobile-ui .workspace-viewport,
+  body.mobile-ui .workspace-view,
+  body.mobile-ui #previewTab,
+  body.mobile-ui #planTab,
+  body.mobile-ui #dataTab{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    box-sizing:border-box!important;
+  }
+
+  body.mobile-ui .workspace-viewport{
+    overflow:hidden!important;
+  }
+
+  body.mobile-ui #previewTab{
+    left:0!important;
+    right:0!important;
+    overflow:auto!important;
+    padding:8px!important;
+    text-align:left!important;
+  }
+
+  body.mobile-ui #previewTab .preview-wrap{
+    width:max-content!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:visible!important;
+    transform-origin:top left!important;
+  }
+
+  body.mobile-ui #previewTab .sheet{
+    margin:0!important;
+    transform-origin:top left!important;
+  }
+}
+
+/* ===== V14.1 CENTERLINE POINTS ===== */
+.center{
+  padding:3px 5px!important;
+  vertical-align:middle;
+}
+.center-axis-label{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  line-height:1.05;
+}
+.center-point-list{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  margin-top:4px;
+  padding-top:4px;
+  border-top:1px solid rgba(0,0,0,.38);
+}
+.center-point .pointtop{
+  gap:3px;
+  font-size:10px!important;
+}
+.center-point .symbol{
+  width:16px!important;
+  height:16px!important;
+  flex-basis:16px!important;
+}
+.center-point .rig-symbol{
+  width:16px!important;
+  height:16px!important;
+}
+.center-point .pointid{
+  font-size:8px!important;
+}
+.center-point .cableline{
+  font-size:7px!important;
+}
+
+/* ===== V14.1 MOBILE PRINT: ONE GENERATED PAGE PER PAPER PAGE =====
+   Use a true Letter-sized page with no browser margin. The SVG already contains
+   its own safe inset, so mobile Chrome cannot spill one generated page onto two. */
+@media print{
+  @page{
+    size:8.5in 11in!important;
+    margin:0!important;
+  }
+
+  html,body{
+    width:8.5in!important;
+    min-width:8.5in!important;
+    max-width:8.5in!important;
+    height:auto!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:visible!important;
+  }
+
+  .print-pages{
+    display:block!important;
+    width:8.5in!important;
+    min-width:8.5in!important;
+    max-width:8.5in!important;
+    margin:0!important;
+    padding:0!important;
+  }
+
+  .svg-print-page{
+    display:block!important;
+    box-sizing:border-box!important;
+    width:8.5in!important;
+    min-width:8.5in!important;
+    max-width:8.5in!important;
+    height:11in!important;
+    min-height:11in!important;
+    max-height:11in!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:hidden!important;
+    page-break-inside:avoid!important;
+    break-inside:avoid-page!important;
+    page-break-after:always!important;
+    break-after:page!important;
+  }
+
+  .svg-print-page:last-child{
+    page-break-after:auto!important;
+    break-after:auto!important;
+  }
+
+  .svg-print-page svg{
+    display:block!important;
+    width:8.5in!important;
+    height:11in!important;
+    max-width:8.5in!important;
+    max-height:11in!important;
+    margin:0!important;
+    padding:0!important;
+  }
+}
+
+/* ===== V15 print typography + filename display ===== */
+.file-picker-row{display:flex;flex-direction:column;gap:7px}
+.selected-file-name{display:block;max-width:100%;padding:7px 9px;border:1px solid #39434a;border-radius:6px;background:#101619;color:#dfe6e9;font-size:12px;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media (min-width:901px){.file-picker-row{gap:8px}}
+
+
+/* ===== Elevate Layout V16 ===== */
+.import-panel{display:grid;gap:8px}.visually-hidden-file{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important}.import-layout-button{display:flex!important;align-items:center;gap:12px;padding:13px 14px!important;border:1px solid #4a5a62;border-radius:8px;background:#162126;color:#fff;cursor:pointer;transition:.15s ease}.import-layout-button:hover{border-color:#58d62e;background:#1b292e}.import-layout-button .import-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:7px;background:#58d62e;color:#111;font-size:22px;font-weight:800}.import-layout-button strong,.import-layout-button small{display:block}.import-layout-button small{margin-top:3px;color:#aebbc1;font-size:10px;letter-spacing:.05em}.selected-file-name{border-left:3px solid #58d62e!important}.pointtop{column-gap:6px!important}
+
+
+/* V16.1 — layout fit controls and restored plan grid selector */
+.toolbar-actions{display:flex;align-items:center;gap:12px;min-width:0}
+.layout-view-tools{display:flex;align-items:center;gap:6px}
+.layout-view-tools .btn{padding:8px 11px;white-space:nowrap}
+.layout-view-tools .btn.active{background:var(--green,#35b729);border-color:var(--green,#35b729);color:#fff;box-shadow:0 0 0 2px rgba(53,183,41,.16)}
+.plan-grid-control{display:flex!important;align-items:center;gap:7px;padding:5px 8px!important;border:1px solid #cfd7db;border-radius:7px;background:#fff!important;color:#161b1e!important;font-weight:800!important;white-space:nowrap}
+.plan-grid-control span{display:inline-block;color:#273037}
+.plan-grid-control select{min-width:82px!important;margin:0!important}
+
+@media (max-width:1100px){
+  .toolbar{align-items:flex-start;flex-wrap:wrap}
+  .toolbar-actions{width:100%;justify-content:space-between;flex-wrap:wrap}
+  .plan-tools{overflow:visible!important;flex-wrap:wrap!important}
+  .plan-grid-control{order:-1}
+}
+@media (max-width:700px){
+  .layout-view-tools{width:100%}
+  .layout-view-tools .btn{flex:1}
+  .toolbar-actions{gap:8px}
+}
+@media print{
+  .layout-view-tools{display:none!important}
+  #sheet{zoom:1!important}
+}
+
+
+/* ===== Elevate Layout V17 — responsive viewport engine ===== */
+.layout-scale-frame{position:relative;display:block;min-width:0;transform-origin:top left}
+#previewTab.fit-width-active{overflow-x:hidden!important;overflow-y:auto!important}
+#previewTab.fit-width-active .layout-scale-frame{margin:0 auto}
+#previewTab.fit-width-active #sheet{min-width:1000px!important;max-width:none!important;margin:0!important}
+#sheet{transform-origin:top left;will-change:transform}
+@media(max-width:900px){
+  #previewTab.fit-width-active{padding:8px!important;overflow-x:hidden!important}
+  #previewTab.fit-width-active #sheet{min-width:1000px!important;border:1px solid #222!important}
+}
+@media print{
+  .layout-scale-frame{width:auto!important;height:auto!important;transform:none!important}
+  #sheet{transform:none!important;width:100%!important;min-width:0!important}
+}
+
+
+/* ===== V17.6 definitive fit-width viewport ===== */
+@media screen{
+  #previewTab.fit-width-active{overflow-x:hidden!important;overflow-y:auto!important;}
+  #previewTab.fit-width-active .layout-scale-frame{
+    margin:0!important;
+    max-width:100%!important;
+    min-width:0!important;
+    box-sizing:border-box!important;
+  }
+  #previewTab.fit-width-active #sheet{
+    margin:0!important;
+    transform:none!important;
+    transform-origin:top left!important;
+    max-width:none!important;
+  }
+}
+@media print{#sheet{zoom:1!important;}}
+
+/* V17.7 true centered viewport */
+@media screen{
+ #previewTab.fit-width-active{overflow-x:hidden!important;}
+ #previewTab.fit-width-active .layout-scale-frame{margin-left:auto!important;margin-right:auto!important;position:relative!important;overflow:visible!important;}
+ #previewTab.fit-width-active #sheet{margin:0!important;max-width:none!important;}
+}
+@media print{#sheet{position:static!important;left:auto!important;transform:none!important;width:100%!important;min-width:0!important;}}
+
+/* V17.8 fit-width: one scaling system, no legacy centering transforms */
+@media screen{
+  #previewTab.fit-width-active .layout-scale-frame{
+    display:block!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    min-width:0!important;
+    max-width:none!important;
+    box-sizing:content-box!important;
+    overflow:hidden!important;
+  }
+  #previewTab.fit-width-active #sheet{
+    position:absolute!important;
+    left:0!important;
+    top:0!important;
+    margin:0!important;
+    zoom:1!important;
+    max-width:none!important;
+    transform-origin:top left!important;
+  }
+}
+
+
+/* ===== V17.9 authoritative viewport rules ===== */
+@media screen{
+  #previewTab.workspace-view{
+    min-width:0!important;
+  }
+  #previewTab.fit-width-active{
+    overflow-x:hidden!important;
+    overflow-y:auto!important;
+  }
+  #previewTab.fit-width-active #layoutScaleFrame{
+    display:block!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    box-sizing:content-box!important;
+    overflow:hidden!important;
+  }
+  #previewTab.fit-width-active #sheet{
+    margin:0!important;
+    zoom:1!important;
+    max-width:none!important;
+    transform-origin:top left!important;
+  }
+  #previewTab.actual-size-active{
+    overflow-x:auto!important;
+  }
+  #previewTab .markout,
+  #previewTab .markout td{
+    box-sizing:border-box!important;
+  }
+}
+
+
+/* ===== V17.10 definitive fit-width override =====
+   Older V17 blocks contain transform:none!important. This final rule binds the
+   inline --fit-scale value with equal specificity and appears last. */
+@media screen{
+  #previewTab.fit-width-active #layoutScaleFrame{
+    overflow:hidden!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  #previewTab.fit-width-active #sheet{
+    position:absolute!important;
+    left:0!important;
+    top:0!important;
+    transform:scale(var(--fit-scale,1))!important;
+    transform-origin:top left!important;
+    zoom:1!important;
+  }
+  #previewTab.actual-size-active #sheet{
+    position:relative!important;
+    transform:none!important;
+    zoom:1!important;
+  }
+}
+
+/* ===== V18 occupied-markout viewport ===== */
+@media screen{
+  #previewTab.fit-width-active #layoutScaleFrame{
+    width:100%;
+    max-width:100%;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    overflow:hidden!important;
+  }
+  #previewTab.fit-width-active #sheet{
+    margin:0!important;
+    max-width:none!important;
+    zoom:1!important;
+    will-change:transform,left;
+  }
+}
+
+
+/* ===== V19 Foundation: isolated document viewport ===== */
+@media screen{
+  #previewTab.viewport-engine-active{
+    position:absolute!important;
+    inset:0!important;
+    display:block!important;
+    overflow:auto!important;
+    padding:12px!important;
+    overscroll-behavior:contain;
+    background:#e9edf0;
+    scroll-behavior:auto;
+  }
+  #previewTab.viewport-engine-active #layoutScaleFrame{
+    display:block!important;
+    position:relative!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin:0!important;
+    overflow:visible!important;
+    box-sizing:border-box!important;
+  }
+  #previewTab.viewport-engine-active #sheet{
+    display:block!important;
+    position:absolute!important;
+    right:auto!important;
+    bottom:auto!important;
+    margin:0!important;
+    zoom:1!important;
+    max-width:none!important;
+    box-sizing:border-box!important;
+    transform-origin:top left!important;
+    will-change:transform;
+  }
+  .layout-view-tools{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    flex-wrap:wrap;
+  }
+  .layout-view-tools .viewport-zoom-button{
+    min-width:36px;
+    padding-left:10px;
+    padding-right:10px;
+    font-size:18px;
+    line-height:1;
+  }
+  .layout-view-tools .viewport-zoom-value{
+    min-width:64px;
+    font-variant-numeric:tabular-nums;
+  }
+}
+
+
+/* ===== V19.0.2 document-order and header isolation fix ===== */
+@media screen{
+  #previewTab.viewport-engine-active #sheet{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    overflow:hidden!important;
+    background:#fff!important;
+    isolation:isolate!important;
+  }
+  #previewTab.viewport-engine-active #sheet > .sheet-header{
+    position:relative!important;
+    inset:auto!important;
+    order:0!important;
+    flex:0 0 auto!important;
+    width:100%!important;
+    min-width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+    background:#fff!important;
+    z-index:2!important;
+    overflow:hidden!important;
+  }
+  #previewTab.viewport-engine-active #sheet > .sheet-content{
+    position:relative!important;
+    inset:auto!important;
+    order:1!important;
+    flex:0 0 auto!important;
+    width:100%!important;
+    min-width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:hidden!important;
+    z-index:1!important;
+  }
+  #previewTab.viewport-engine-active #sheet .markout{
+    position:relative!important;
+    inset:auto!important;
+    margin:0!important;
+    transform:none!important;
+    width:100%!important;
+    min-width:100%!important;
+    max-width:100%!important;
+  }
+  #previewTab.viewport-engine-active #sheet .markout td,
+  #previewTab.viewport-engine-active #sheet .pointcell,
+  #previewTab.viewport-engine-active #sheet .pointtop,
+  #previewTab.viewport-engine-active #sheet .pointid{
+    position:relative;
+    z-index:1;
+  }
+}
+@media print{
+  #sheet > .sheet-content{display:block!important;overflow:visible!important}
+}
+
+
+/* ===== V19.1 cursor-centered zoom and document panning ===== */
+@media screen{
+  #previewTab.viewport-engine-active{touch-action:none;}
+  #previewTab.viewport-engine-active.pan-ready{cursor:grab;}
+  #previewTab.viewport-engine-active.panning{cursor:grabbing!important;user-select:none;}
+  #previewTab.viewport-engine-active.panning *{cursor:grabbing!important;}
+  #previewTab.viewport-engine-active #sheet{transition:transform 90ms ease-out;}
+  #previewTab.viewport-engine-active.panning #sheet{transition:none;}
+}
+@media (prefers-reduced-motion:reduce){
+  #previewTab.viewport-engine-active #sheet{transition:none!important;}
+}
