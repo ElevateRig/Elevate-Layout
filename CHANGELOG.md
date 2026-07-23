@@ -1,3 +1,14 @@
+# Elevate Layout V19.2.0
+
+- Added a Plan View Notes Annotation Engine.
+- Notes can be added, selected, dragged, edited, and deleted.
+- Notes are saved locally per imported project and included in Plan SVG exports.
+- Added keyboard deletion and double-click editing for selected notes.
+- Added a remembered sidebar checkbox to show or hide Plan View notes without deleting them.
+- Imports `Notes`, `Note`, `Remarks`, or `Comments` fields from CSV and Excel reports.
+- Added an editable Notes column to Point Data and note labels to screen and printed layouts.
+- Centered cable-length labels across the full width of each Layout cell.
+
 # Elevate Layout V19.1.1
 
 - Restored native two-finger trackpad and mouse-wheel scrolling for panning the Layout viewport.

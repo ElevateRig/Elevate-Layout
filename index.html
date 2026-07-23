@@ -5,8 +5,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
 <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
-<title>Elevate Layout V17.10</title>
-<link href="css/app-v190.css?v=1910" rel="stylesheet"/>
+<title>Elevate Layout V19.2.0</title>
+<link href="css/app-v190.css?v=1920" rel="stylesheet"/>
 </head>
 <body>
 <header class="appbar">
@@ -22,7 +22,7 @@
 <button class="tool-button" id="toolbarFit" type="button"><span class="tool-icon">⌗</span><span>Fit</span></button>
 <button class="tool-button" id="toolbarPrint" type="button"><span class="tool-icon">⎙</span><span>Print</span></button>
 <span class="toolbar-spacer"></span>
-<span class="toolbar-version">V17.10</span>
+<span class="toolbar-version">V19.2.0</span>
 </nav>
 <div class="shell">
 <div aria-hidden="true" class="sidebar-backdrop" id="sidebarBackdrop"></div>
@@ -76,6 +76,7 @@
 <option value="left">Left aligned</option>
 </select>
 <label class="check-label"><input id="showCable" type="checkbox"/> Show cable lengths on layout</label>
+<label class="check-label"><input checked="" id="showPlanNotes" type="checkbox"/> Show notes on layouts</label>
 </div>
 <div class="section">
 <h2>3 · OUTPUT</h2><div class="status" style="margin:0 0 10px">Portrait print with adaptive cell sizing and adjustable typography.</div>
@@ -164,6 +165,10 @@
 <button class="btn secondary" id="zoomIn">Zoom In</button>
 <button class="btn secondary" id="zoomOut">Zoom Out</button>
 <button class="btn secondary" id="savePlanSvg">Download Plan SVG</button>
+<span class="plan-tool-divider" aria-hidden="true"></span>
+<button class="btn annotation-add" id="addPlanNote" type="button">+ Add Note</button>
+<button class="btn secondary" id="editPlanNote" type="button" disabled>Edit Note</button>
+<button class="btn secondary danger" id="deletePlanNote" type="button" disabled>Delete Note</button>
 <label class="plan-grid-control"><span>Grid Size</span>
 <select aria-label="Plan view grid size" id="gridSize">
 <option value="1">1 ft</option>
@@ -191,6 +196,7 @@
 <div class="plan-legend">
 <strong>Plan View</strong><br/>
         Scroll to zoom · drag to pan<br/>
+        Notes: add, then drag to position · double-click to edit<br/>
         Heavy centerlines mark X=0 and Y=reference.
       </div>
 </div>
@@ -213,6 +219,7 @@
 <div>Imported Y</div>
 <div>Decimal X</div>
 <div>Decimal Y</div>
+<div>Notes</div>
 <div>Cable</div>
 </div>
 <div class="point-data-rows" id="dataScroll">
@@ -225,6 +232,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <script>if(typeof XLSX==='undefined'){document.write('<script src="https://unpkg.com/xlsx@0.18.5/dist/xlsx.full.min.js"><\/script>')}</script>
-<script src="js/app-v190.js?v=1910"></script>
+<script src="js/app-v190.js?v=1920"></script>
 </body>
 </html>
