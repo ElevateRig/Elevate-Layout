@@ -1,3 +1,9 @@
+# Elevate Layout V19.2.1
+
+- Centered datum direction and measurement labels vertically and horizontally in printed cells.
+- Limited the Layout preview to five point cells per side, matching the printed layout.
+- Wrapped dense rows onto additional levels so Fit Width no longer expands for rows wider than five points.
+
 # Elevate Layout V19.2.0
 
 - Added a Plan View Notes Annotation Engine.
