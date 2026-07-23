@@ -1,3 +1,8 @@
+# Elevate Layout V19.2.2
+
+- Replaced the legacy white-text print logo with the app header's embedded black-text logo.
+- Kept the print logo self-contained so it is available before the browser opens print preview.
+
 # Elevate Layout V19.2.1
 
 - Centered datum direction and measurement labels vertically and horizontally in printed cells.
