@@ -5,8 +5,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
 <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
-<title>Elevate Layout V19.2.2</title>
-<link href="css/app-v190.css?v=1922" rel="stylesheet"/>
+<title>Elevate Layout V19.2.5</title>
+<link href="css/app-v190.css?v=1925" rel="stylesheet"/>
 </head>
 <body>
 <header class="appbar">
@@ -22,7 +22,7 @@
 <button class="tool-button" id="toolbarFit" type="button"><span class="tool-icon">⌗</span><span>Fit</span></button>
 <button class="tool-button" id="toolbarPrint" type="button"><span class="tool-icon">⎙</span><span>Print</span></button>
 <span class="toolbar-spacer"></span>
-<span class="toolbar-version">V19.2.2</span>
+<span class="toolbar-version">V19.2.5</span>
 </nav>
 <div class="shell">
 <div aria-hidden="true" class="sidebar-backdrop" id="sidebarBackdrop"></div>
@@ -60,6 +60,13 @@
 <option value="270">Upstage at Left</option>
 </select>
 <div class="orientation-note">Rotates both the markout layout and plan view. At 90°/270°, the center column changes to SL/SR.</div>
+<label>Centerline labels</label>
+<select id="centerlineLabels">
+<option selected="" value="auto">Automatic for orientation</option>
+<option value="usds">US / DS</option>
+<option value="slsr">SL / SR</option>
+</select>
+<div class="orientation-note">Changes the center-column labels without changing point coordinates or sheet rotation.</div>
 <label>Layout order</label>
 <select id="rowOrder"><option value="desc">Farthest DS to farthest US</option><option value="asc">Farthest US to farthest DS</option></select>
 <label>Centerline / reference Y</label>
@@ -102,6 +109,11 @@
 <option selected="" value="normal">Regular</option>
 <option value="bold">Bold</option>
 </select>
+<label>Measurement row color</label>
+<div class="color-setting">
+<input aria-label="Measurement row color" id="rowBandColor" type="color" value="#eef7eb"/>
+<span>Alternating measurement rows</span>
+</div>
 <div class="btnrow">
 <button class="btn primary" id="printBtn">Print / Save PDF</button>
 <button class="btn secondary" id="downloadCsv">Export edited CSV</button>
@@ -232,6 +244,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <script>if(typeof XLSX==='undefined'){document.write('<script src="https://unpkg.com/xlsx@0.18.5/dist/xlsx.full.min.js"><\/script>')}</script>
-<script src="js/app-v190.js?v=1922"></script>
+<script src="js/app-v190.js?v=1925"></script>
 </body>
 </html>

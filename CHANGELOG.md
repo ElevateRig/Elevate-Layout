@@ -1,3 +1,22 @@
+# Elevate Layout V19.2.5
+
+- Added a remembered color picker for alternating printed measurement rows.
+- Kept the unselected rows neutral so measurement groups remain easy to distinguish.
+
+# Elevate Layout V19.2.4
+
+- Added a Centerline labels dropdown with Automatic, US / DS, and SL / SR choices.
+- Label overrides no longer require changing the sheet orientation or point coordinates.
+- Added an explicit `0,0` datum row to Layout preview and print output when no imported point lands on the reference row.
+- Remembered the selected centerline-label mode between sessions.
+
+# Elevate Layout V19.2.3
+
+- Added subtle alternating green-tint and gray-tint bands to printed measurement groups.
+- Kept wrapped continuation levels the same color as their parent measurement group.
+- Replaced continuation boundaries with lighter dashed dividers and added `CONT. x/y` labels where space permits.
+- Strengthened true measurement-group boundaries for faster visual scanning.
+
 # Elevate Layout V19.2.2
 
 - Replaced the legacy white-text print logo with the app header's embedded black-text logo.
