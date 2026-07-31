@@ -1,3 +1,8 @@
+# Elevate Layout V19.2.6
+
+- Added a printer-safe 0.20-inch border around generated Letter pages.
+- Scaled each printed layout page to the printable area so outer lines, headers, and footers are not clipped by printer hardware margins.
+
 # Elevate Layout V19.2.5
 
 - Added a remembered color picker for alternating printed measurement rows.

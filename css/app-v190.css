@@ -2158,6 +2158,45 @@ body{
 }
 @media print{#sheet{position:static!important;left:auto!important;transform:none!important;width:100%!important;min-width:0!important;}}
 
+/* V19.2.6 printer-safe Letter output.
+   Keep every generated page inside a 0.20in hardware-safe border instead of
+   relying on borderless printing support. */
+@media print{
+  @page{
+    size:letter portrait!important;
+    margin:.2in!important;
+  }
+  html,body,
+  .print-pages{
+    width:8.1in!important;
+    min-width:8.1in!important;
+    max-width:8.1in!important;
+    margin:0!important;
+    padding:0!important;
+  }
+  .svg-print-page{
+    box-sizing:border-box!important;
+    width:8.1in!important;
+    min-width:8.1in!important;
+    max-width:8.1in!important;
+    height:10.6in!important;
+    min-height:10.6in!important;
+    max-height:10.6in!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:hidden!important;
+  }
+  .svg-print-page svg{
+    display:block!important;
+    width:8.1in!important;
+    max-width:8.1in!important;
+    height:10.6in!important;
+    max-height:10.6in!important;
+    margin:0!important;
+    padding:0!important;
+  }
+}
+
 /* V17.8 fit-width: one scaling system, no legacy centering transforms */
 @media screen{
   #previewTab.fit-width-active .layout-scale-frame{
